@@ -1,6 +1,6 @@
-FROM nginx:1.22.1
+FROM nginx:1.24.0
 
-ENV NGINX_VERSION     "1.22.1"
+ENV NGINX_VERSION     "1.24.0"
 ENV NGINX_VTS_VERSION "0.2.2"
 
 RUN apt-get update && apt-get install -y gnupg2 && curl http://nginx.org/packages/keys/nginx_signing.key | apt-key add -
@@ -27,8 +27,9 @@ RUN cd /opt \
 
 COPY nginx.conf /etc/nginx/nginx.conf
 
-RUN apt-get update && apt-get install -y ca-certificates curl gnupg && \
-  curl -fsSL https://deb.nodesource.com/gpgkey/nodesource-repo.gpg.key | gpg --dearmor -o /etc/apt/keyrings/nodesource.gpg && \
+RUN apt-get update && apt-get install -y ca-certificates curl gnupg
+
+RUN curl -fsSL https://deb.nodesource.com/gpgkey/nodesource-repo.gpg.key | gpg --dearmor -o /etc/apt/keyrings/nodesource.gpg && \
   echo "deb [signed-by=/etc/apt/keyrings/nodesource.gpg] https://deb.nodesource.com/node_18.x nodistro main" | tee /etc/apt/sources.list.d/nodesource.list && \
   apt-get update && apt-get install nodejs -y
 
