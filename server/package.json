@@ -4,7 +4,7 @@
   "description": "cdn server",
   "homepage": "https://github.com/y-t99/cdn",
   "main": "dist/app.js",
-  "author": "itou-peng",
+  "author": "itou ng",
   "scripts": {
     "start": "tsc && node dist/app.js",
     "build": "tsc"

@@ -5,6 +5,8 @@ services:
     image: cdn-server
     ports:
       - 8080:80
+    networks:
+      - cdn-network
 
   edge:
     container_name: edge
@@ -13,3 +15,8 @@ services:
       - 8000:80
     depends_on:
       - backend
+    networks:
+      - cdn-network
+
+networks:
+  cdn-network:
