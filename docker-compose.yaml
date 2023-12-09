@@ -1,0 +1,15 @@
+version: "3.9"
+services:
+  backend:
+    container_name: backend
+    image: cdn-server
+    ports:
+      - 8080:80
+
+  edge:
+    container_name: edge
+    image: cdn-edge
+    ports:
+      - 8000:80
+    depends_on:
+      - backend

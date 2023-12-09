@@ -5,7 +5,9 @@ const app = new Koa();
 
 export const apis = new Router();
 
-apis.get('/', (ctx) => {
+apis.get('/', (ctx: Koa.BaseContext) => {
+  const maxAge = ctx.query.max_age;
+  ctx.headers['cache-control'] = `public, max-age=${maxAge || 10}`;
   ctx.body = 'Hello World!';
 });
 
